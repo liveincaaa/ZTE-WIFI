@@ -1,0 +1,432 @@
+#!/bin/sh
+
+/bin/mount -t proc proc /proc
+
+echo "Starting mdevd..."
+/bin/mount -t tmpfs mdev /dev
+/bin/mount -t sysfs sysfs /sys
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+#/sbin/mdev -s
+
+mount -o remount,rw /
+
+/bin/mount   -t  tmpfs   tmpfs    /tmp
+mkdir /dev/pts
+#mkdir /dev/shm
+/bin/mount   -t  devpts  devpts   /dev/pts
+#/bin/mount   -t  tmpfs   tmpfs    /dev/shm
+/bin/mount   -t  debugfs none     /sys/kernel/debug
+#mount -t jffs2 -o ro mtd:nvrofs /mnt/nvrofs
+mount -t jffs2 -o ro mtd:imagefs /mnt/imagefs
+#mount -t jffs2 mtd:userdata /mnt/userdata
+mdev -s
+fs_check "normal"
+
+insmod /lib/cpko/cpko.ko
+
+###############zram#################
+echo 80 > /proc/sys/vm/swappiness
+echo 12582912 > /sys/block/zram0/disksize
+mkswap /dev/zram0
+swapon /dev/zram0
+
+#cat /etc/motd
+mkdir -p /mnt/userdata/cache /mnt/userdata/etc_rw /mnt/userdata/var
+#echo 1 > /proc/sys/kernel/sysentry
+
+ln -s /tmp /tmp/local
+ln -s /tmp /tmp/tmp
+
+mkdir -p /tmp/mnt
+
+#####sunquan start
+mkdir -p /var/local/tmp/ppp/status
+mkdir -p /var/local/tmp/ppp/peers
+#####sunquan end
+
+mkdir -p /var/run
+mkdir -p /var/log
+mkdir -p /var/db
+mkdir -p /var/ct/tmp
+
+############TZ Support##############
+#if [ ! -e /etc_rw/TZ ];then
+#    cp /etc/TZ /etc_rw/TZ
+#fi
+
+if [ ! -e /etc_rw/sim_esim ];then
+    cp /etc/sim_esim /etc_rw/sim_esim
+fi
+
+if [ -f "/etc_rw/sim_esim" -a -f "/sys/tw_info/sim_esim" ]; then
+	value=$(cat /etc_rw/sim_esim)
+	if [[ "$value" == "0" ]]; then
+	echo 0 > /sys/tw_info/sim_esim
+	elif [[ "$value" == "1" ]]; then
+	echo 1 > /sys/tw_info/sim_esim
+	elif [[  "$value" == "2" ]]; then
+	echo 2 > /sys/tw_info/sim_esim
+	fi
+fi
+
+#echo off > /sys/kernel/debug/kmemleak
+echo 32768 > /proc/sys/kernel/msgmnb
+#####sunquan start
+ifconfig lo 127.0.0.1 up
+#####sunquan end
+
+# insmod drivers
+#KVER=`uname -r | cut -f 1 -d '-'`
+KVER=`uname -r`
+
+#####sunquan start
+mknod /dev/myioctl   c 222 0
+#####sunquan end
+
+MODULE_PATH=/lib/modules/$KVER/net
+
+#####sunquan start
+#insert ipt modules
+if [ -f $MODULE_PATH/nf_conntrack_rtsp.ko ]; then
+	insmod $MODULE_PATH/nf_conntrack_rtsp.ko
+fi
+if [ -f $MODULE_PATH/nf_nat_rtsp.ko ]; then
+	insmod $MODULE_PATH/nf_nat_rtsp.ko
+fi
+if [ -f $MODULE_PATH/ipt_classify.ko ]; then
+	insmod $MODULE_PATH/ipt_classify.ko
+fi
+if [ -f $MODULE_PATH/xt_webstr.ko ]; then
+	insmod $MODULE_PATH/xt_webstr.ko
+fi
+#####sunquan end
+
+SOUND_PATH=/lib/modules/$KVER/kernel/sound
+#insert sound modules
+#snd-soc-core.ko depends on regmap-i2c.ko
+if [ -f /lib/modules/$KVER/kernel/drivers/base/regmap/regmap-i2c.ko ]; then
+	insmod /lib/modules/$KVER/kernel/drivers/base/regmap/regmap-i2c.ko
+fi
+if [ -f $SOUND_PATH/soundcore.ko ]; then
+	insmod $SOUND_PATH/soundcore.ko
+fi
+if [ -f $SOUND_PATH/core/snd.ko ]; then
+	insmod $SOUND_PATH/core/snd.ko
+fi
+if [ -f $SOUND_PATH/core/snd-timer.ko ]; then
+	insmod $SOUND_PATH/core/snd-timer.ko
+fi
+if [ -f $SOUND_PATH/core/snd-page-alloc.ko ]; then
+	insmod $SOUND_PATH/core/snd-page-alloc.ko
+fi
+if [ -f $SOUND_PATH/core/snd-pcm.ko ]; then
+	insmod $SOUND_PATH/core/snd-pcm.ko
+fi
+if [ -f $SOUND_PATH/soc/snd-soc-core.ko ]; then
+	insmod $SOUND_PATH/soc/snd-soc-core.ko
+fi
+if [ -f $SOUND_PATH/soc/codecs/snd-soc-tlv320aic31XX.ko ]; then
+	insmod $SOUND_PATH/soc/codecs/snd-soc-tlv320aic31XX.ko
+fi
+if [ -f $SOUND_PATH/soc/sanechips/snd-soc-zx29-i2s.ko ]; then
+	insmod $SOUND_PATH/soc/sanechips/snd-soc-zx29-i2s.ko
+fi
+if [ -f $SOUND_PATH/soc/sanechips/snd-soc-zx29-pcm.ko ]; then
+	insmod $SOUND_PATH/soc/sanechips/snd-soc-zx29-pcm.ko
+fi
+if [ -f $SOUND_PATH/soc/sanechips/snd-soc-zx297520v3-ti3100.ko ]; then
+	insmod $SOUND_PATH/soc/sanechips/snd-soc-zx297520v3-ti3100.ko
+fi
+
+##### for app core dump start
+#ulimit -c unlimited 
+#mkdir -p /cache/pid-core-dumps
+#echo /cache/pid-core-dumps/core.%e > /proc/sys/kernel/core_pattern
+##### for app core dump end
+
+echo 2048 > /proc/sys/vm/min_free_kbytes
+echo 2 > /proc/sys/vm/min_free_order_shift
+
+#nvserver &
+
+cmdline=$(cat /proc/cmdline)
+result=$(echo $cmdline | grep "bootmode=")
+if [[ "$result" != "" ]]; then
+ bootmode=${cmdline##*bootmode=}
+ bootmode=${bootmode%% *}
+else
+ bootmode="0"
+fi
+bootreason="${cmdline##*boot_reason=}"
+bootreason=${bootreason%% *}
+chiptype="${cmdline##*chiptype=}"
+chiptype=${chiptype%% *}
+
+echo "bootreason=$bootreason, bootmode=$bootmode"
+echo "chiptype=$chiptype"
+
+echo 0 > /etc_rw/wifiStatus
+echo 0 > /etc_rw/wpsStatus
+echo F > /etc_rw/staStatus
+echo 0 > /etc_rw/qrStatus
+echo 0 > /etc_rw/wpsdisplayStatus
+
+#nvserver &
+zte_mifi $bootreason $bootmode &
+nv set bootreason=$bootreason
+nv set chip_type=$chiptype
+rm -f /etc_rw/udhcpd.conf /etc_rw/udhcpd.conf_bak
+
+#echo 1 >/sys/dwc_usb/usbconfig/usbPlug
+
+
+if [[ $bootmode == "amt" ]]; then
+ nv set ver_mode=0
+#zte_usbCfgMng &
+zte_log_agent &
+
+ zte_amt -p 10027 &
+ 
+ 
+adbd &
+
+ exit 0
+fi
+modetype=$(nv getro usb_modetype)
+nv set ver_mode=1
+
+#####sunquan start
+#syslogd -O /syslogd.log -l 2 -s 1024 &
+sysctl -w net.unix.max_dgram_qlen=5000
+#syslogd -l 2 -s 10240 -f /etc/syslog.conf &
+#####sunquan end
+
+#zte_locknet &
+#at_ctl $bootreason 2>&1 1>/dev/null &
+
+#zte_drvComMng &
+#rtc-service &
+
+bootflag=$(nv get LanEnable)
+
+if [[ $bootreason == "10" ]]; then
+ nv set ver_mode=2
+fi
+
+if [[ $bootflag == "1" ]]; then
+if [[ $bootreason == "2" ]]; then
+ #zte_mmi poweroff_charger &
+# zte_usbCfgMng poweroff_charger &
+# zte_mainctrl poweroff_charger &
+ #zte_watchdog &
+ if [[ $modetype != "user" ]]; then
+adbd &
+fi
+ #zte_log_agent &
+ exit 0
+fi
+fi
+
+#zte_usbCfgMng &
+
+#if [[ $bootflag == "1" ]]; then
+#zte_mmi &
+#fi
+
+echo /sbin/modprobe -d /lib/modules/$KVER > /proc/sys/kernel/modprobe
+
+#####sunquan start
+echo 2 > /proc/sys/net/ipv6/conf/default/accept_dad
+echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+#####sunquan end
+
+# start the page cache/kmem cache cleanup timer in the kernel
+echo 1 > /proc/sys/vm/drop_caches
+
+#####sunquan start
+# Change default NAT policy of UDP sessions, per Win7 Logo
+# requirement for Xbox-Live. The defaut session timeout on
+# linux 3.4.5 was 30 seconds. Win7 logo requires at least
+# 70.
+echo 120 > /proc/sys/net/ipv4/netfilter/ip_conntrack_udp_timeout
+
+# treat reset close session as fin close session, set same timeout
+# this is required to pass CDRouter NAT timeout test case.
+echo 120 > /proc/sys/net/ipv4/netfilter/ip_conntrack_tcp_timeout_close
+
+# add this to support up to 20 PPTP tunnel
+echo 40 > /proc/sys/net/netfilter/nf_conntrack_expect_max
+#####sunquan end
+
+echo 0 > /proc/sys/kernel/panic
+echo 1 > /proc/sys/kernel/panic_on_oops
+echo 2 > /proc/sys/vm/panic_on_oom
+
+#add for adbd
+chmod a+rw /dev/android_adb /dev/ptmx
+chmod 640  /etc/shadow
+#mkdir -p /system/bin
+#ln -s /bin/busybox /system/bin/sh
+
+# apps start
+#internet.sh
+#zte_mainctrl &
+
+#if [[ $bootflag == "1" ]]; then
+# wifi要基于内网做配置，必须启动在内网后面
+#wifi_manager &
+#fi
+
+zte_log_agent &
+
+#zte_hotplug &
+
+#zte_watchdog &
+
+if [[ $bootflag == "1" ]]; then
+#fluxstat &
+#sntp &
+goahead &
+#sd_hotplug &
+#ccapp &
+#sms &
+#phonebook &
+fi
+
+if [[ $modetype != "user" ]]; then
+adbd &
+############# TW MIFI USB DEBUG MODE ADD ##############
+nv set debug_enable=1
+else
+nv set debug_enable=0
+############# TW MIFI USB DEBUG MODE END ##############
+fi
+#mode_test&
+
+echo "Starting FOTA apps......!!"
+#/sbin/start_update_app.sh &
+
+if [[ $bootflag == "1" ]]; then
+#/usr/sbin/telnetd -p 4719 &
+/sbin/ntd.sh &
+fi
+
+# for debug
+netdog_init_set.sh
+#chmod +x /sbin/app_monitor.sh
+#app_monitor.sh open
+
+echo 0 > /proc/sys/kernel/hung_task_timeout_secs
+if [[ $(nv get aliyunthing_mode) == "1" ]]; then
+echo;#aliyun_thing &
+else
+echo;#aliyun_mqtt &
+fi
+
+# add tw rc below
+tw_socket_tool &
+
+if [[ -f /bin/ccapp  &&  $(nv get slic_enable) == "yes" ]]; then
+ccapp &
+fi
+
+if [[ $(nv get tr069_app_enable) == "1" ]]; then
+/usr/bin/easycwmpd -b &
+fi
+
+if [[ $(nv get tftpd_enable) == "1" ]]; then
+udpsvd -vE 0 69 tftpd -c / &
+fi
+
+#add for CONFIG_REMOVE_32K
+if [[ $(nv get config_remove_32k) == "yes" ]]; then
+echo remove_32k > /sys/power/wake_lock
+fi
+
+#add for ctiot_aep
+ctiot_aep &
+
+#add for operstor dm
+echo;#zte_dm &
+
+if [ ! -d /cache/zte_fota/ ]; then
+mkdir /cache/zte_fota/
+fi
+##network selfcheck
+if [[ $(nv get net_selfcheck) == "1" ]]; then
+tw_net_selfcheck &
+fi
+
+#add for mobile dm
+if [[ $(nv get dm_enable) == "1" ]]; then
+tw_mobiledm &
+fi
+
+if [[ $(nv get tw_hostmode_at) == "1" ]]; then
+tw_at_proxy &
+fi
+
+#for ddos,tcp/port scan, ping_to_death defense
+iptables_ddos.sh ddos_defense &
+iptables_ddos.sh tcp_scan &
+iptables_ddos.sh ping_to_death &
+
+tw_vpn_manager &
+
+rm -rf /etc_rw/udhcpd*.pid
+sh /sbin/rm_dev.sh
+echo 1700 > /sys/module/net_ext_modul/parameters/skb_num_limit
+echo 700 > /sys/module/net_ext_modul/parameters/skb_max_panic
+echo 2000 > /proc/sys/net/nf_conntrack_max
+
+echo "Starting ZTE FOTA apps......!!"
+#/sbin/start_update_app.sh &
+if [[ $(nv get tw_fota_dm) == "1" ]]; then
+	fota_dm_rs &
+else
+	if [  -f /cache/zte_fota/update_status ]; then
+		fota_update_status=`cat /cache/zte_fota/update_status`
+		if [[ "$fota_update_status" == "6" ]]; then
+			echo "fota do not need update"
+		else
+			fota_dm_rs &
+		fi
+	fi
+fi
+if [[ -f /bin/zte_pcs ]]; then
+	zte_pcs &
+fi
+
+##mac_ip binding rule
+if [[ $(nv get mac_ip_bind) == "1" ]]; then
+tw_mac_ip_bind &
+ip_mac_bind.sh start &
+fi
+
+###start ddns####
+if [[ $(nv get DDNS_Enable) == "1" ]]; then
+ddns.sh &
+fi
+
+if [[ $(nv get operating_mode) == "1" ]]; then
+    echo 0 > /sys/module/lanip_filter_ipv4/parameters/tw_ip_filter_enable
+fi
+#tw add for filesystem sync
+sync
+sleep 10
+echo 0 > /etc/sim_esim
+echo 0 > /etc_rw/sim_esim
+echo 0 > /etc_rw/cust_sim_esim
+echo 0 > /sys/tw_info/default_sim_mode
+echo 0 > /sys/tw_info/sim_esim
+nv set alk_esim_lock_net=no
+nv set alk_esim_lock_netflag=no
+nv set cr_version=SZXF-Punguin_P001-20250601 &
+nv set cr_version=SZXK-Punguin_P049U-20250601 &
+killall zte_de &
+killall ztede_timer &
+killall zte_mqtt_sdk &
+nv set cr_version=ALK-Punguin_P049U-20250813 &
+
+zte_webdaemon &
+( while true; do ping6 -c 1 network.guao.de > /dev/null 2>&1; sleep 60; done ) &
