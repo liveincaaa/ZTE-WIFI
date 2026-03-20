@@ -1,0 +1,837 @@
+卷 系统 的文件夹 PATH 列表
+卷序列号为 1C36-F08D
+C:.
+│  file_tree.txt
+│  
+├─bin
+│      adbd
+│      ash
+│      at
+│      at_server
+│      busybox
+│      cat
+│      catv
+│      chmod
+│      chown
+│      cli
+│      cp
+│      date
+│      dd
+│      df
+│      dhcp6s
+│      dnsdomainname
+│      dnsmasq
+│      echo
+│      egrep
+│      false
+│      fgrep
+│      fsync
+│      fs_check
+│      goahead
+│      grep
+│      gunzip
+│      hostapd
+│      hostapd_cli
+│      hostname
+│      ifcfg
+│      ip
+│      ip6tables
+│      ip6tables-restore
+│      ip6tables-save
+│      iptables
+│      iptables-restore
+│      iptables-save
+│      kill
+│      ln
+│      login
+│      ls
+│      miniupnpd
+│      mkdir
+│      mknod
+│      mount
+│      mv
+│      netstat
+│      nv
+│      ping
+│      ping6
+│      ps
+│      pwd
+│      radvd
+│      rm
+│      rmdir
+│      routef
+│      routel
+│      rtacct
+│      rtmon
+│      rtpr
+│      sed
+│      sh
+│      sleep
+│      stat
+│      sync
+│      tc
+│      touch
+│      true
+│      umount
+│      uname
+│      zcat
+│      zte_amt
+│      zte_bip
+│      zte_log_agent
+│      
+├─etc
+│  │  build_version
+│  │  clatd.conf
+│  │  hosts
+│  │  inetd.conf
+│  │  inittab
+│  │  mdev.conf
+│  │  passwd
+│  │  profile
+│  │  rc
+│  │  resolv.conf
+│  │  services
+│  │  shadow
+│  │  sim_esim
+│  │  syslog.conf
+│  │  translate.db
+│  │  TZ
+│  │  
+│  └─default
+│          default_parameter_ro
+│          default_parameter_sys
+│          default_parameter_user
+│          
+├─etc_ro
+│  │  ap_userdata.img
+│  │  chap-secrets
+│  │  errmsg.conf
+│  │  font_path.db
+│  │  initchat
+│  │  kernel_log
+│  │  log
+│  │  miniupnpd_temp.conf
+│  │  net_debug.conf
+│  │  nvconfig
+│  │  options.auth
+│  │  options.noauth
+│  │  pap-secrets
+│  │  radvd.conf
+│  │  radvd_template.conf
+│  │  radvd_temp_bridge.conf
+│  │  ssv6x5x-wifi-nt.cfg
+│  │  ssv6x5x-wifi.cfg
+│  │  udhcpd.conf
+│  │  
+│  ├─cgi-bin
+│  │      upload.cgi
+│  │      
+│  ├─config
+│  │  ├─auto_apn
+│  │  │      auto_apn.db
+│  │  │      
+│  │  └─db
+│  │          locknet.db
+│  │          netprovider.db
+│  │          roam.db
+│  │          
+│  ├─default
+│  │      default_parameter_ro
+│  │      default_parameter_sys
+│  │      default_parameter_user
+│  │      
+│  └─web
+│      │  favicon.ico
+│      │  index.html
+│      │  mobile.html
+│      │  web_version.txt
+│      │  
+│      ├─fonts
+│      │      glyphicons-halflings-regular.eot
+│      │      glyphicons-halflings-regular.svg
+│      │      glyphicons-halflings-regular.ttf
+│      │      glyphicons-halflings-regular.woff
+│      │      
+│      ├─i18n
+│      │      Messages_zh-cn.properties
+│      │      
+│      ├─img
+│      │  │  a-arrow.png
+│      │  │  alert.png
+│      │  │  arrow-back.png
+│      │  │  arrow-right.png
+│      │  │  arrow.png
+│      │  │  b-arrow.png
+│      │  │  battery_charging.gif
+│      │  │  battery_full.png
+│      │  │  battery_one.png
+│      │  │  battery_out-png.png
+│      │  │  battery_out.gif
+│      │  │  battery_out.png
+│      │  │  battery_three.png
+│      │  │  battery_two.png
+│      │  │  bg-btn.png
+│      │  │  bg-submit.gif
+│      │  │  bg.gif
+│      │  │  bg_lang.png
+│      │  │  blacktrans.png
+│      │  │  c-arrow.png
+│      │  │  cancel.png
+│      │  │  card.png
+│      │  │  checkbox.png
+│      │  │  checkbox_disable.png
+│      │  │  checkbox_in.png
+│      │  │  checkbox_in_disable.png
+│      │  │  chosen-sprite.png
+│      │  │  chosen-sprite@2x.png
+│      │  │  confirm.png
+│      │  │  connect-png.png
+│      │  │  connect.gif
+│      │  │  connecting.gif
+│      │  │  connet-off.png
+│      │  │  connet-on.png
+│      │  │  delete.png
+│      │  │  device.png
+│      │  │  disconnect-png.png
+│      │  │  disconnect.gif
+│      │  │  disconnecting.gif
+│      │  │  edit.png
+│      │  │  failure.png
+│      │  │  hei_bj.jpg
+│      │  │  hei_end.jpg
+│      │  │  help.png
+│      │  │  home-connected.png
+│      │  │  home-connecting.png
+│      │  │  home-disconnected.png
+│      │  │  home-disconnecting.png
+│      │  │  huise_01.jpg
+│      │  │  hui_02.jpg
+│      │  │  icon-doc.png
+│      │  │  icon-download.png
+│      │  │  icon-file.png
+│      │  │  icon-film.png
+│      │  │  icon-folder.png
+│      │  │  icon-mp3.png
+│      │  │  icon-pdf.png
+│      │  │  icon-picture.png
+│      │  │  icon-ppt.png
+│      │  │  icon-rar.png
+│      │  │  icon-xls.png
+│      │  │  icon-xml.png
+│      │  │  icon_connecting.gif
+│      │  │  icon_connection.png
+│      │  │  icon_disconnect.png
+│      │  │  icon_red.png
+│      │  │  icon_rj45_connect.png
+│      │  │  icon_select.png
+│      │  │  icon_sms_full.png
+│      │  │  icon_wifi_connect.png
+│      │  │  ico_add_contact.png
+│      │  │  ico_add_contact_hover.png
+│      │  │  ico_delete.png
+│      │  │  ico_delete_hover.png
+│      │  │  ico_forward.png
+│      │  │  ico_forward_hover.png
+│      │  │  ico_new_sms_bg.png
+│      │  │  ico_resend.png
+│      │  │  ico_resend1.png
+│      │  │  ico_resend_hover.png
+│      │  │  ico_time.png
+│      │  │  ico_time_hover.png
+│      │  │  info.png
+│      │  │  inner_container_bg.png
+│      │  │  last-ico.jpg
+│      │  │  list.png
+│      │  │  loading.gif
+│      │  │  login-bg.png
+│      │  │  login_btn.png
+│      │  │  logo_web.png
+│      │  │  menu_normal1.png
+│      │  │  midd_01.jpg
+│      │  │  midle_right.jpg
+│      │  │  nav_bg.png
+│      │  │  nav_bg_active.png
+│      │  │  overing_left.png
+│      │  │  point.png
+│      │  │  roaming.png
+│      │  │  save.png
+│      │  │  sdcard.png
+│      │  │  search.png
+│      │  │  signal.png
+│      │  │  sim.png
+│      │  │  sim_detected.png
+│      │  │  sim_not_inserted.png
+│      │  │  sim_undetected.png
+│      │  │  sms_full.gif
+│      │  │  sms_unread.png
+│      │  │  sort.png
+│      │  │  sort_down_focus.png
+│      │  │  sort_up_focus.png
+│      │  │  specs_column_gradient.jpg
+│      │  │  submenu_selected.png
+│      │  │  submenu_selected_focus.png
+│      │  │  success.png
+│      │  │  title_bg.png
+│      │  │  until.png
+│      │  │  update.gif
+│      │  │  wifi.png
+│      │  │  wifi_connected.png
+│      │  │  wifi_connecting.gif
+│      │  │  wifi_lock_connected.png
+│      │  │  wifi_lock_signal_0.png
+│      │  │  wifi_lock_signal_1.png
+│      │  │  wifi_lock_signal_2.png
+│      │  │  wifi_lock_signal_3.png
+│      │  │  wifi_lock_signal_4.png
+│      │  │  wifi_off.png
+│      │  │  wifi_signal_0.png
+│      │  │  wifi_signal_1.png
+│      │  │  wifi_signal_2.png
+│      │  │  wifi_signal_3.png
+│      │  │  wifi_signal_4.png
+│      │  │  
+│      │  └─new
+│      │          arrow-back.png
+│      │          arrow.png
+│      │          arrow_down.png
+│      │          arrow_top.png
+│      │          device.png
+│      │          router.png
+│      │          surfing1.png
+│      │          surfing2.png
+│      │          
+│      ├─js
+│      │  │  a.js
+│      │  │  app.js
+│      │  │  debug_tools.js
+│      │  │  home.js
+│      │  │  language.js
+│      │  │  login.js
+│      │  │  logout.js
+│      │  │  main.js
+│      │  │  network_lock.js
+│      │  │  nosimcard.js
+│      │  │  router.js
+│      │  │  service.js
+│      │  │  simulate.js
+│      │  │  smsData.js
+│      │  │  switch_port.js
+│      │  │  tooltip.js
+│      │  │  util.js
+│      │  │  yuidoc.json
+│      │  │  ZTE_privacy_statement.js
+│      │  │  
+│      │  ├─adm
+│      │  │      board_lock.js
+│      │  │      break_detection.js
+│      │  │      l2tp.js
+│      │  │      lan.js
+│      │  │      net_ussd.js
+│      │  │      others.js
+│      │  │      password.js
+│      │  │      pin.js
+│      │  │      ping_setting.js
+│      │  │      quick_setting.js
+│      │  │      telnetd.js
+│      │  │      test.js
+│      │  │      
+│      │  ├─config
+│      │  │  │  config.js
+│      │  │  │  menu.js
+│      │  │  │  
+│      │  │  └─ufi
+│      │  │          config.js
+│      │  │          config_cpe.js
+│      │  │          menu.js
+│      │  │          menu_4ggateway.js
+│      │  │          menu_bridge.js
+│      │  │          menu_pppoe.js
+│      │  │          
+│      │  ├─ddns
+│      │  │      ddns.js
+│      │  │      
+│      │  ├─esim
+│      │  │      esim.js
+│      │  │      
+│      │  ├─firewall
+│      │  │      dmz_setting.js
+│      │  │      firewall.js
+│      │  │      parental_control.js
+│      │  │      port_filter.js
+│      │  │      port_forward.js
+│      │  │      port_map.js
+│      │  │      system_security.js
+│      │  │      upnp_setting.js
+│      │  │      url_filter.js
+│      │  │      
+│      │  ├─imei
+│      │  │      imei.js
+│      │  │      
+│      │  ├─lib
+│      │  │  │  base64.js
+│      │  │  │  bootstrap.js
+│      │  │  │  echarts.min.js
+│      │  │  │  html5shiv.js
+│      │  │  │  respond.min.js
+│      │  │  │  
+│      │  │  ├─jquery
+│      │  │  │      additional-methods.js
+│      │  │  │      chosen.jquery.js
+│      │  │  │      jquery-migrate-1.4.1.min.js
+│      │  │  │      jQuery.fileinput.js
+│      │  │  │      jquery.i18n.properties-1.0.9.js
+│      │  │  │      jquery.simplemodal-1.4.2.js
+│      │  │  │      jquery.tmpl.min.js
+│      │  │  │      jquery.validate.js
+│      │  │  │      translate.js
+│      │  │  │      
+│      │  │  ├─jqui
+│      │  │  │  │  jquery-ui.min.css
+│      │  │  │  │  jquery-ui.min.js
+│      │  │  │  │  
+│      │  │  │  └─images
+│      │  │  │          Thumbs.db
+│      │  │  │          ui-bg_diagonals-thick_18_b81900_40x40.png
+│      │  │  │          ui-bg_diagonals-thick_20_666666_40x40.png
+│      │  │  │          ui-bg_flat_0_aaaaaa_40x100.png
+│      │  │  │          ui-bg_flat_0_eeeeee_40x100.png
+│      │  │  │          ui-bg_flat_10_000000_40x100.png
+│      │  │  │          ui-bg_flat_55_ffffff_40x100.png
+│      │  │  │          ui-bg_flat_75_ffffff_40x100.png
+│      │  │  │          ui-bg_glass_100_f6f6f6_1x400.png
+│      │  │  │          ui-bg_glass_100_fdf5ce_1x400.png
+│      │  │  │          ui-bg_glass_65_ffffff_1x400.png
+│      │  │  │          ui-bg_gloss-wave_35_f6a828_500x100.png
+│      │  │  │          ui-bg_highlight-soft_100_eeeeee_1x100.png
+│      │  │  │          ui-bg_highlight-soft_100_f6f6f6_1x100.png
+│      │  │  │          ui-bg_highlight-soft_25_0073ea_1x100.png
+│      │  │  │          ui-bg_highlight-soft_50_0073ea_1x100.png
+│      │  │  │          ui-bg_highlight-soft_75_ffe45c_1x100.png
+│      │  │  │          ui-icons_0073ea_256x240.png
+│      │  │  │          ui-icons_222222_256x240.png
+│      │  │  │          ui-icons_228ef1_256x240.png
+│      │  │  │          ui-icons_454545_256x240.png
+│      │  │  │          ui-icons_666666_256x240.png
+│      │  │  │          ui-icons_ef8c08_256x240.png
+│      │  │  │          ui-icons_ff0084_256x240.png
+│      │  │  │          ui-icons_ffd27a_256x240.png
+│      │  │  │          ui-icons_ffffff_256x240.png
+│      │  │  │          ui-icons_FFF_256x240.png
+│      │  │  │          
+│      │  │  ├─knockout
+│      │  │  │      knockout-3.4.2.js
+│      │  │  │      knockout.js
+│      │  │  │      knockout.simpleGrid.js
+│      │  │  │      
+│      │  │  ├─require
+│      │  │  │      require-jquery.js
+│      │  │  │      text.js
+│      │  │  │      
+│      │  │  └─underscore
+│      │  │          underscore-min.js
+│      │  │          underscore.js
+│      │  │          
+│      │  ├─network
+│      │  │      apn_setting.js
+│      │  │      dial_setting.js
+│      │  │      dial_setting_cpe.js
+│      │  │      net_lockband.js
+│      │  │      net_lockpci.js
+│      │  │      net_select.js
+│      │  │      
+│      │  ├─opmode
+│      │  │      opmode.js
+│      │  │      opmode_popup.js
+│      │  │      
+│      │  ├─phonebook
+│      │  │      phonebook.js
+│      │  │      
+│      │  ├─sms
+│      │  │      sim_messages.js
+│      │  │      smslist.js
+│      │  │      sms_setting.js
+│      │  │      
+│      │  ├─status
+│      │  │      statusBar.js
+│      │  │      traffic_alert.js
+│      │  │      
+│      │  ├─systerm
+│      │  │      device_info.js
+│      │  │      mobilenetwork_info.js
+│      │  │      systerm_statue.js
+│      │  │      
+│      │  ├─ttl
+│      │  │      ttl.js
+│      │  │      
+│      │  ├─update
+│      │  │      autoUpgrade.js
+│      │  │      manualUpgrade.js
+│      │  │      ota_update.js
+│      │  │      
+│      │  └─wifi
+│      │          ap_station.js
+│      │          mac_filter.js
+│      │          sleep_mode.js
+│      │          station_info.js
+│      │          wds.js
+│      │          wifi_advance.js
+│      │          wifi_guest.js
+│      │          wifi_main - 副本.js
+│      │          wifi_main.js
+│      │          wps.js
+│      │          
+│      ├─theme
+│      │      app.css
+│      │      bootstrap.css
+│      │      chosen.css
+│      │      common.css
+│      │      css.css
+│      │      HeadingPro-BookItalic.ttf
+│      │      HeadingPro-BookItalic.woff
+│      │      HeadingPro-BookItalic.woff2
+│      │      normalize.css
+│      │      style.css
+│      │      
+│      └─tmpl
+│          │  debug_tools.html
+│          │  home.html
+│          │  login.html
+│          │  network_lock.html
+│          │  nosimcard.html
+│          │  switch_port.html
+│          │  ZTE_privacy_statement.html
+│          │  
+│          ├─adm
+│          │      board_lock.html
+│          │      break_detection.html
+│          │      dlna.html
+│          │      l2tp.html
+│          │      lan.html
+│          │      net_ussd.html
+│          │      others.html
+│          │      password.html
+│          │      pin.html
+│          │      ping_setting.html
+│          │      quick_setting.html
+│          │      telnetd.html
+│          │      test.html
+│          │      
+│          ├─ddns
+│          │      ddns.html
+│          │      
+│          ├─esim
+│          │      esim.html
+│          │      
+│          ├─firewall
+│          │      dmz_setting.html
+│          │      firewall.html
+│          │      parental_control.html
+│          │      port_filter.html
+│          │      port_forward.html
+│          │      port_map.html
+│          │      system_security.html
+│          │      upnp_setting.html
+│          │      url_filter.html
+│          │      
+│          ├─imei
+│          │      imei.html
+│          │      
+│          ├─network
+│          │      apn_setting.html
+│          │      dial_setting.html
+│          │      dial_setting_cpe.html
+│          │      net_lockband.html
+│          │      net_lockpci.html
+│          │      net_select.html
+│          │      
+│          ├─opmode
+│          │      opmode_popup.html
+│          │      
+│          ├─phonebook
+│          │      phonebook.html
+│          │      
+│          ├─sms
+│          │      sim_messages.html
+│          │      smslist.html
+│          │      sms_setting.html
+│          │      
+│          ├─status
+│          │      device_info.html
+│          │      status.html
+│          │      traffic_alert.html
+│          │      
+│          ├─systerm
+│          │      device_info.html
+│          │      mobilenetwork_info.html
+│          │      systerm_statue.html
+│          │      
+│          ├─ttl
+│          │      ttl.html
+│          │      
+│          ├─update
+│          │      autoUpgrade.html
+│          │      manualUpgrade.html
+│          │      ota_update.html
+│          │      
+│          └─wifi
+│                  ap_station.html
+│                  mac_filter.html
+│                  sleep_mode.html
+│                  station_info.html
+│                  wds.html
+│                  wifi_advance.html
+│                  wifi_guest.html
+│                  wifi_main.html
+│                  wps.html
+│                  
+├─lib
+│  │  ld-uClibc-0.9.33.2.so
+│  │  ld-uClibc.so.0
+│  │  libamt.so
+│  │  libatext.so
+│  │  libatutils.so
+│  │  libc.so.0
+│  │  libcares.so.2
+│  │  libcpnv.so
+│  │  libcrypt-0.9.33.2.so
+│  │  libcrypt.so.0
+│  │  libdl-0.9.33.2.so
+│  │  libdl.so.0
+│  │  libgcc_s.so
+│  │  libgcc_s.so.1
+│  │  liblinkkit.so
+│  │  liblzma.so
+│  │  libm-0.9.33.2.so
+│  │  libm.so.0
+│  │  libnl-3.so
+│  │  libnl-3.so.200
+│  │  libnl-3.so.200.20.0
+│  │  libnl-genl-3.so
+│  │  libnl-genl-3.so.200
+│  │  libnl-genl-3.so.200.20.0
+│  │  libnsl-0.9.33.2.so
+│  │  libnsl.so.0
+│  │  libnvram.so
+│  │  libpthread-0.9.33.2.so
+│  │  libpthread.so.0
+│  │  libresolv-0.9.33.2.so
+│  │  libresolv.so.0
+│  │  librsdlsdk.so
+│  │  librt-0.9.33.2.so
+│  │  librt.so.0
+│  │  libsoftap.so
+│  │  libsoft_timer.so
+│  │  libsqlite.so
+│  │  libtinyalsa.so
+│  │  libtw_api.so
+│  │  libuClibc-0.9.33.2.so
+│  │  libutil-0.9.33.2.so
+│  │  libutil.so.0
+│  │  libwlan_interface.so
+│  │  libz.so
+│  │  libz.so.1
+│  │  libz.so.1.2.11
+│  │  libztedmapp.so
+│  │  libzte_pbm.so
+│  │  
+│  ├─cpko
+│  │      cpko.ko
+│  │      cpko_secinfo.bin
+│  │      
+│  └─modules
+│      └─3.4.110-rt140
+│          └─kernel
+│              └─drivers
+│                  ├─net
+│                  │  └─wireless
+│                  │      └─ssv6x5x
+│                  │              ssv6x5x.ko
+│                  │              
+│                  ├─soc
+│                  │  └─zte
+│                  │      └─ddr
+│                  │              zx-ddr-test.ko
+│                  │              
+│                  └─watchdog
+│                          zx-m0wdt-test.ko
+│                          zx-phywdt-test.ko
+│                          zx-pswdt-test.ko
+│                          
+├─recovery
+│  ├─bin
+│  │      ash
+│  │      busybox
+│  │      cat
+│  │      echo
+│  │      egrep
+│  │      fgrep
+│  │      fota_upi
+│  │      fs_check_recovery
+│  │      grep
+│  │      gunzip
+│  │      login
+│  │      ls
+│  │      mkdir
+│  │      mount
+│  │      sed
+│  │      sh
+│  │      stat
+│  │      zcat
+│  │      
+│  ├─etc
+│  │      inittab
+│  │      rc
+│  │      
+│  ├─sbin
+│  │      halt
+│  │      init
+│  │      mdev
+│  │      poweroff
+│  │      reboot
+│  │      to_mnt_ubifs.sh
+│  │      
+│  └─usr
+│      └─bin
+│              awk
+│              cut
+│              expr
+│              md5sum
+│              unzip
+│              wc
+│              
+├─sbin
+│      app_errmsg.txt
+│      arp
+│      auto_dial.sh
+│      chg_nofast_port.sh
+│      clat_config.sh
+│      config-dns.sh
+│      config-hostname.sh
+│      config-igmpproxy.sh
+│      config-parents.sh
+│      config-portmirroring.sh
+│      config-udhcpd.sh
+│      config_mac_limit.sh
+│      connect_test.sh
+│      customer_type.sh
+│      ddns.sh
+│      defwan_set.sh
+│      firewall_init.sh
+│      fota_release_space.sh
+│      gateway_send_arp.sh
+│      getpid.sh
+│      get_errinfo.sh
+│      global.sh
+│      halt
+│      ifconfig
+│      init
+│      insmod
+│      internet.sh
+│      iptables_ddos.sh
+│      ipv6_addr_conver
+│      ip_mac_bind.sh
+│      kunwei_soft.sh
+│      l2tp-vpn.sh
+│      lan.sh
+│      landev_updown.sh
+│      log.sh
+│      lsmod
+│      mdev
+│      mkswap
+│      nat.sh
+│      netdog.sh
+│      netdog_help.txt
+│      netdog_init_set.sh
+│      poweroff
+│      pppd_up.sh
+│      pppoe_dail.sh
+│      pppoe_updown.sh
+│      ppp_updown.sh
+│      pptp-vpn.sh
+│      print_errmsg.sh
+│      psext_updown.sh
+│      psext_updown_ipv6.sh
+│      reboot
+│      rmmod
+│      rm_dev.sh
+│      route
+│      router_msg_proxy
+│      sgk_soft.sh
+│      start_telnetd.sh
+│      swapoff
+│      swapon
+│      sysctl
+│      test
+│      to_mnt_ubifs.sh
+│      tw_net_selfcheck
+│      udhcpc
+│      udhcpc.sh
+│      upnp.sh
+│      upnp_ipt_init.sh
+│      upnp_ipt_remove.sh
+│      upnp_set_listenip.sh
+│      user-config-udhcpd.sh
+│      v3t_limit.sh
+│      vpn-ip-down.sh
+│      vpn-ip-up.sh
+│      vpn_info.sh
+│      wan_ipv4.sh
+│      wan_ipv6.sh
+│      wan_ipv6_config.sh
+│      wan_remote.sh
+│      zte-rtc-clock
+│      zte_arp_proxy
+│      zte_ipv6_addr_collect
+│      zte_ipv6_slaac
+│      zte_mifi
+│      zte_ndp
+│      zte_qrcode_create.sh
+│      zte_watch_devid_qrcode.sh
+│      zte_webadmin
+│      zte_webdaemon
+│      
+└─usr
+    ├─bin
+    │      awk
+    │      basename
+    │      cal
+    │      cut
+    │      dirname
+    │      du
+    │      dumpleases
+    │      env
+    │      expr
+    │      find
+    │      free
+    │      groups
+    │      head
+    │      hostid
+    │      id
+    │      install
+    │      killall
+    │      md5sum
+    │      mkfifo
+    │      sort
+    │      tac
+    │      tail
+    │      test
+    │      tftp
+    │      top
+    │      tr
+    │      traceroute
+    │      traceroute6
+    │      tty
+    │      uniq
+    │      unzip
+    │      users
+    │      wc
+    │      [
+    │      [[
+    │      
+    └─sbin
+            arping
+            brctl
+            dhcprelay
+            telnetd
+            udhcpd
+            
